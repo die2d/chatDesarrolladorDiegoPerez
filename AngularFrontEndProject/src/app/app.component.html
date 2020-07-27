@@ -1,0 +1,36 @@
+<div style="text-align:center">
+  <br><br><br><br>
+  <img width="280" src="../assets/handytec_logo_index.svg"/>
+  <br> <br>
+
+  <div class="container h-100">
+    <div class="row justify-content-center h-100">
+        <div class="col-sm-4 align-self-center text-center">
+          <div *ngIf="!userId" class="card shadow">
+            <div class="card-body">           
+        
+              <h3>Join room</h3>
+        
+              <small>Pick a username to join a chat room.</small>
+        
+              <form #chatInfoForm="ngForm" (ngSubmit)="joinRoom()">
+                <br>
+                  <input type="text" class="form-control" id="name"
+                         required
+                         [(ngModel)]="username" name="name"
+                         #name="ngModel" placeholder="Enter your Username here.."> 
+                <br>
+                  <button type="submit" class="btn btn-success" [disabled]="!chatInfoForm.form.valid">Join</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div> 
+  
+  
+
+  
+</div>
+
+<ng-chat *ngIf="userId" [adapter]="adapter" [userId]="userId" [historyEnabled]="false" [theme]="'light-theme'"></ng-chat>
